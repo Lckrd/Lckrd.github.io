@@ -1,0 +1,70 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, 'Times New Roman', Times, serif;
+    color: black;
+    user-select: none;
+    background-image: url("fon2.png");
+    background-size: no-repeat;
+    background-size: cover;
+    background-size: fixed;
+}
+
+#game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+}
+
+.deck-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.card {
+    width: 70px;
+    height: 100px;
+    border: 5px solid black;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    cursor: pointer;
+    user-select: none;
+}
+
+.pile, .played-card {
+    width: 100px;
+    height: 140px;
+    border: 5px solid black;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(13, 105, 13);
+    user-select: none;
+}
+
+.played-card {
+    background-color: rgb(82, 82, 224);
+}
+.red-suit {
+    color: red;
+  }
+  
+.black-suit {
+    color: black;
+  }
