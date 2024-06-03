@@ -1,6 +1,10 @@
 const suits = ["♠", "♣", "♥", "♦"];
 const values = ['6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
 
+function changeBackground(imageUrl) { 
+    document.body.style.backgroundImage = "url("+imageUrl+")"; 
+}
+
 function createDeck() {
     let deck=[];
     for (let suit of suits) {
@@ -40,6 +44,10 @@ function displayPlayedCards(card1, card2) {
     const player2Played = document.getElementById('player2-played');
     player1Played.innerText = `${card1.value}  ${card1.suit}`;
     player2Played.innerText = `${card2.value}  ${card2.suit}`;
+    player1Played.classList.remove("red-suit");
+    player1Played.classList.remove('black-suit');
+    player2Played.classList.remove("red-suit");
+    player2Played.classList.remove('black-suit');
     if (card1.suit === '♥' || card1.suit === '♦') {
         player1Played.classList.add('red-suit');
     } else {
