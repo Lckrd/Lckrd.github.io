@@ -101,6 +101,15 @@ function playRound() {
     } else if(result < 0){
         player2Pile.push(selectedPlayer1Card, selectedPlayer2Card);
     } else{
+        if (player1Deck.length === 0 && player1Pile.length > 0) {
+            player1Deck = shuffle(player1Pile);
+            player1Pile = [];
+            renderDeck(player1Deck, 'player1-deck-container');
+        }
+        if (player2Deck.length === 0 && player2Pile.length > 0) {
+            player2Deck = shuffle(player2Pile);
+            player2Pile = [];
+        }
         player1Deck.push(selectedPlayer1Card);
         player2Deck.push(selectedPlayer2Card);
     }
@@ -110,6 +119,18 @@ function playRound() {
 
     updateDeckCounts();
     checkDecks();
+}
+
+let player1Score = sessionStorage.getItem('userScore') ? parseInt(sessionStorage.getItem('userScore')) : 0;
+document.getElementById('player1-rating').innerText = `${player1Score}`;
+function updateScore(winner) {
+    if (winner === 'Player wins!') {
+        player1Score += 10;
+    } else {
+        player1Score -= 5;
+    }
+    document.getElementById('player1-rating').innerText = `${player1Score}`;
+    sessionStorage.setItem('userScore', player1Score);
 }
 
 function checkDecks() {
@@ -123,9 +144,25 @@ function checkDecks() {
         player2Pile = [];
     }
     if (player1Deck.length === 0 || player2Deck.length === 0) {
-        alert(player1Deck.length === 0 ? 'Opponent wins!' : 'Player wins!');
+        let winnerMessage = player1Deck.length === 0 ? 'Opponent wins!' : 'Player wins!';
+        alert(winnerMessage);
+        updateScore(winnerMessage);
     }
 }
+
+function resetGame() {
+    deck = shuffle(createDeck());
+    player1Deck = deck.slice(0,18);
+    player2Deck = deck.slice(18);
+    player1Pile = [];
+    player2Pile = [];
+    selectedPlayer1Card = null;
+    selectedPlayer2Card = null;
+
+    renderDeck(player1Deck, 'player1-deck-container');
+    updateDeckCounts();
+}
+document.getElementById('reset-button').addEventListener('click', resetGame);
 
 let deck = shuffle(createDeck());
 let player1Deck = deck.slice(0, 18);

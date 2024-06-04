@@ -32,6 +32,21 @@ body {
     margin: 10px;
 }
 
+.reset-button{
+    position: fixed;
+    bottom: 100px;
+    left: 10px;
+}
+
+.player-rating{
+    position: fixed;
+    bottom: 50px;
+    left: 10px;
+    width: 80px;
+    height: 40px;
+    background-color: rgb(221, 188, 97);
+}
+
 .deck-container {
     display: flex;
     flex-wrap: wrap;
